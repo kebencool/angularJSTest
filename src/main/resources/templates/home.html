@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+
+    <meta charset="UTF-8">
+    <title>home</title>
+
+    <link href="static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">-->
+
+</head>
+<body>
+<div ng-controller="myController">
+    <h2 ng-init="id = 0000 ">id:{{id}}</h2>
+    <h2 ng-init="name = 'myName'">name:{{name}}</h2>
+    <button ng-click="reNew()">获取数据</button>
+
+
+    <form action="/register">
+        <fieldset>
+            <legend>register</legend>
+            <label>Account:</label>
+            <input type="text" placeholder="请输入账号" name="account">
+            <label>Password:</label>
+            <input type="password" placeholder="请输入密码" name="password">
+            <label>name:</label>
+            <input type="text" placeholder="请输入昵称" name="name">
+            <span class="help-block">Example block-level help text here.</span>
+            <label class="checkbox">
+                <input type="checkbox"> 记住登录
+            </label>
+            <button type="submit" class="btn">Submit</button>
+        </fieldset>
+    </form>
+
+</div>
+<script src="static/js/angular.min.js"></script>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script>
+    var app = angular.module("myApp",[]);
+    app.controller("myController",function ($scope,$http) {
+        $scope.reNew = function () {
+            $http.get("http://localhost:8080/index").
+            success(function (response) {
+                $scope.id = response.id;
+                $scope.name = response.name;
+            })
+        }
+    })
+</script>
+</body>
+</html>

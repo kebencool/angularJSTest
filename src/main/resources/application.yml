@@ -1,0 +1,15 @@
+spring:
+  resources:
+    static-locations: classpath:/static/,classpath:/
+  mvc:
+    static-path-pattern: classpath:/static/,classpath:/
+    view:
+      suffix: .html
+      prefix: classpath:/templates/
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: Aa744634592.
+    driver-class-name: com.mysql.jdbc.Driver
+
